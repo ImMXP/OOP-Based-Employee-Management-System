@@ -3,7 +3,7 @@
 ## ✨ شارات المشروع (Project Status)
 
 [![لغة البرمجة: Java](https://img.shields.io/badge/Language-Java-blue.svg)](https://www.java.com/)
-[![GitHub license](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/ImMXP/[اسم-المستودع-هنا]/blob/main/LICENSE)
+[![GitHub license](https://uqu.edu.sa/)](https://github.com/ImMXP/[اسم-المستودع-هنا]/blob/main/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/ImMXP/[اسم-المستودع-هنا])](https://github.com/ImMXP/[اسم-المستودع-هنا]/stargazers)
 
 ---
