@@ -1,0 +1,71 @@
+##############################
+# ملفات الجافا المترجمة (أهم شيء)
+##############################
+*.class
+
+##############################
+# ملفات مؤقتة ومضغوطة وسجلات
+##############################
+*.log
+*.ctxt
+.mtj.tmp/
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ملفات أخطاء الجافا (Crash Logs)
+hs_err_pid*
+
+##############################
+# إعدادات المحررات (IDEs)
+# لا يجب رفعها لأنها تختلف من جهاز لجهاز
+##############################
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# Eclipse
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.classpath
+.project
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+out/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+##############################
+# ملفات نظام التشغيل (Junk Files)
+##############################
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
