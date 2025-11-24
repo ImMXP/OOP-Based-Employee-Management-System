@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class AdminstratorDATA {
+public class AdminstratorDATA { // database لموظفينHr 
     HashMap<String,String> adminData = new HashMap<String,String>();
     public AdminstratorDATA(){
         adminData.put("Mohammad","qwert54321");

@@ -4,7 +4,7 @@ public class Engnieer extends Employee{
      private int hoursWorked;
 
 
-     public Engnieer(String id,String name,String jobTitle,double Rate,int hours){
+     public Engnieer(int id,String name,String jobTitle,double Rate,int hours){
             super(id, name, jobTitle);
             hourlyRate = Rate;
             hoursWorked = hours;

@@ -1,7 +1,7 @@
 public class Intern extends Employee{
     private double fixedStipend ;
     
-    public Intern(String id, String name, String jobTitle){
+    public Intern(int id, String name, String jobTitle){
         super(id,name,jobTitle) ;
         fixedStipend = 990.00 ;
 
