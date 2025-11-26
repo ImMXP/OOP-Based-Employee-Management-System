@@ -11,4 +11,9 @@ public class Intern extends Employee{
     public double calculateSalary(){
         return fixedStipend ;
     }
+    
+    @Override
+    public String getFullDetails(){
+        return super.getDetails() + "\nJob Title : " + super.getJobTitle() + "\nSalary : " + this.calculateSalary();
+    }
 }

@@ -17,6 +17,16 @@ public class Engnieer extends Employee{
      public double calculateSalary(){
         return hourlyRate * hoursWorked ;
      }
+     
+     @Override
+       public String getFullDetails(){
+       return super.getDetails() + "\nJob Title : Engineer" +
+       "\nHourly Rate : " + 
+       this.hourlyRate + 
+       "\nHours Worked : " + 
+       this.hoursWorked + 
+       "\nSalary : " + this.calculateSalary();
+       }
 
 
 

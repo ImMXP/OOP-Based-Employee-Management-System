@@ -9,12 +9,19 @@ public abstract class Employee{
         this.name = name;
         this.jobTitle = jobTitle ;
     }
+    // ---- ^^ constructor ^^ ----
+
+    public String getSubName()
+    {String[] subName = this.name.split(" "); // Split the name by spaces
+    return subName[0] +" "+ subName[1].charAt(0) +" " + subName[2];} // Return the formatted name
+
+    public int getId(){return this.id ;}
+    public String getName(){return this.name;} 
+    public String getJobTitle(){return this.jobTitle;}
+    public String getDetails(){return "ID :" + this.id + " | Name : " + getSubName();}
+    // ---- ^^ getters & AKA concrete methods ^^ ----
+
     public abstract double calculateSalary();
-    
-    public String getDetails(){
-        return "ID :" + this.id + " | Name : " + this.name;
-    }
-    public String getFullDetails(){
-        return "Employee name : " + this.name + "\nEmployee id :" + this.id + "\nJob title : " + this.jobTitle ;
-    }
+    public abstract String getFullDetails();
+    // ---- ^^ abstract methods ^^ ----
 } 
