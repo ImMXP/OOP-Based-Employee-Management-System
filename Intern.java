@@ -14,6 +14,6 @@ public class Intern extends Employee{
     
     @Override
     public String getFullDetails(){
-        return super.getDetails() + "\nJob Title : " + super.getJobTitle() + "\nSalary : " + this.calculateSalary();
+        return "ID :" + super.getId() + " | " + super.getName() + "\nJob Title : " + super.getJobTitle() + "\nSalary : " + this.calculateSalary() + "$";
     }
 }

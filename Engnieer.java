@@ -20,12 +20,12 @@ public class Engnieer extends Employee{
      
      @Override
        public String getFullDetails(){
-       return super.getDetails() + "\nJob Title : Engineer" +
+       return "ID :" + super.getId() + " | " + super.getName() + "\nJob Title :" + super.getJobTitle() +
        "\nHourly Rate : " + 
        this.hourlyRate + 
        "\nHours Worked : " + 
        this.hoursWorked + 
-       "\nSalary : " + this.calculateSalary();
+       "\nSalary : " + this.calculateSalary() + "$";
        }
 
 

@@ -63,6 +63,11 @@ public class TestEmployee {
                         System.out.println("Enter details for Manager #" + (managers.size() + 1));
                         System.out.print("Enter Name: ");
                         String name = scanner.nextLine();
+                        String CheckName[] = name.split(" ");
+                        if(CheckName.length != 3){
+                            System.out.println("Please enter full name, e.g ( Ahmad adel saud )");
+                            continue;
+                        }
                         System.out.print("Enter Job Title: ");
                         String jobTitle = scanner.nextLine();
                         
@@ -126,6 +131,11 @@ public class TestEmployee {
                         System.out.println("Enter details for Intern #" + (interns.size() + 1));
                         System.out.print("Enter Name: ");
                         String name = scanner.nextLine();
+                        String CheckName[] = name.split(" ");
+                        if(CheckName.length != 3){
+                            System.out.println("Please enter full name, e.g ( Ahmad adel saud )");
+                            continue;
+                        }
                         System.out.print("Enter Job Title: ");
                         String jobTitle = scanner.nextLine();
                         
@@ -150,16 +160,30 @@ public class TestEmployee {
                 case 3: 
                     while(true){
                         System.out.println("Enter details for Engineer #" + (engineers.size() + 1));
-                        System.out.print("Enter Name: ");
+                        System.out.print("Enter Name :");
                         String name = scanner.nextLine();
-                        System.out.print("Enter Job Title: ");
+                        String CheckName[] = name.split(" ");
+                        if(CheckName.length != 3){
+                            System.out.println("Please enter full name, e.g ( Ahmad adel saud )");
+                            continue;
+                        }
+                        System.out.print("Enter Job Title :");
                         String jobTitle = scanner.nextLine();
-                        System.out.print("Enter Salary: ");
-                        double salary = scanner.nextDouble();
-                        scanner.nextLine(); 
-                        
-                        engineers.add(new Engnieer(engineers.size()+1, name, jobTitle, salary, 8));
-                        
+                        double hourlyRate;
+                        while(true){
+                            try{
+                                System.out.print("Enter hourly rate (Default work hour is 8 Hours ) :");
+                                hourlyRate = scanner.nextDouble();
+                                scanner.nextLine();
+                            } catch (Exception InputMismatchException) {
+                                System.out.println("ERROR : Enter invalid number .");
+                                scanner.nextLine();
+                                continue;
+                            }
+                            break;
+                        }
+                        engineers.add(new Engnieer(engineers.size()+1, name, jobTitle, hourlyRate, 8));
+
                         // استفسار المستخدم إذا كان يريد إضافة مهندس آخر
                         System.out.print("Do you want to add another engineer? (yes/no): ");
                         String response = scanner.nextLine().trim().toLowerCase();
@@ -218,19 +242,18 @@ public class TestEmployee {
                             System.out.println("\nManagers Details:");
                             for (Manager m : managers) {
                                 System.out.println("Details for the manager "+ m.getSubName() +"\n"+m.getFullDetails() +"\n");
-                                
                             }
                             break;
                         case 2:
                             System.out.println("\nInterns Details:");
                             for (Intern in : interns) {
-                                System.out.println(in.getFullDetails());
+                                System.out.println("Details for the manager "+ in.getSubName() +"\n"+in.getFullDetails() +"\n");
                             }
                             break;
                         case 3:
                             System.out.println("\nEngineers Details:");
                             for (Engnieer en : engineers) {
-                                System.out.println(en.getFullDetails());
+                                System.out.println("Details for the manager "+ en.getSubName() +"\n"+en.getFullDetails() +"\n");
                             }
                             break;
                         default:

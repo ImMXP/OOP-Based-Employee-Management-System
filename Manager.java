@@ -13,11 +13,12 @@ public class Manager extends Employee{
      public double calculateSalary(){
         return this.baseSalary + this.bonus ;
      }
+
      @Override
        public String getFullDetails(){
          return "ID :" + super.getId() + " | " + super.getName() + "\nJob Title : " + super.getJobTitle() +
          "\nBase Salary : " + this.baseSalary +
          "\nBonus : " + this.bonus +
-         "\nTotal Salary : " + this.calculateSalary();
+         "\nTotal Salary : " + this.calculateSalary() + "$";
          }
 }
