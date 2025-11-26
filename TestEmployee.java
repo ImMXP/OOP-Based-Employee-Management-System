@@ -5,9 +5,9 @@ public class TestEmployee {
     public static void main(String[] args) {
         boolean loggedIn = true;
         System.out.println("Welcome to Employee Management System");
-        
+
         AdminstratorDATA adminData = new AdminstratorDATA(); 
-        
+
         ArrayList<Manager> managers = new ArrayList<>();
         ArrayList<Intern> interns = new ArrayList<>();
         ArrayList<Engnieer> engineers = new ArrayList<>(); 
@@ -47,9 +47,15 @@ public class TestEmployee {
             System.out.println("4. Show all employees");
             System.out.println("5. Show employees spcecific details");
             System.out.println("6. Exit Program");
-            
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // تنظيف السطر بعد الرقم
+            int choice;
+            try {
+                choice = scanner.nextInt();
+                scanner.nextLine();
+            } catch (Exception InputMismatchException) {
+                System.out.println("Invalid input. Please enter a number between 1 and 6.");
+                scanner.nextLine(); 
+                continue;
+            } 
             
             switch (choice) {
                 case 1:
@@ -59,18 +65,43 @@ public class TestEmployee {
                         String name = scanner.nextLine();
                         System.out.print("Enter Job Title: ");
                         String jobTitle = scanner.nextLine();
-                        System.out.print("Enter Salary: ");
-                        double salary = scanner.nextDouble();
-                        scanner.nextLine(); 
+                        
+                        double salary;
+                        while(true){
+                            try {
+                            System.out.print("Enter Salary: ");
+                            salary = scanner.nextDouble();
+                            scanner.nextLine();
+                            }
+                            catch (Exception InputMismatchException) {
+                            System.out.println("Invalid input for salary. Please enter a valid number.");
+                            scanner.nextLine();
+                            continue;
+                          }
+                            break;
+                        }
+                        
                         System.out.println("Do you want to add bonus for this manager? (yes/no): ");
                         String bonusResponse = scanner.nextLine().trim().toLowerCase();
                         
-                        if (bonusResponse.equals("yes")) {
-                            System.out.print("Enter Bonus Amount: ");
-                            double bonus = scanner.nextDouble();
-                            scanner.nextLine();
-                            managers.add(new Manager(managers.size()+1, name, jobTitle, salary, bonus));
-                        } else {    
+                        if (bonusResponse.equalsIgnoreCase("yes") || bonusResponse.equalsIgnoreCase("y")) {
+                            double bonus;
+                            while(true){
+                                try {
+                                    System.out.print("Enter Bonus Amount: ");
+                                    bonus = scanner.nextDouble();
+                                    scanner.nextLine();
+                                    managers.add(new Manager(managers.size()+1, name, jobTitle, salary, bonus));
+                                }
+                                catch (Exception InputMismatchException) {
+                                    System.out.println("Invalid input for bonus, Please enter a valid number.");
+                                    scanner.nextLine();
+                                    continue;
+                                }
+                                break;
+                            }
+                        }else {
+                            System.out.println("No bonus will be added for this manager.");
                             managers.add(new Manager(managers.size()+1, name, jobTitle, salary, 0));
                         }
 
@@ -78,9 +109,9 @@ public class TestEmployee {
                         System.out.print("Do you want to add another manager? (yes/no): ");
                         String response = scanner.nextLine().trim().toLowerCase();
                         
-                        if (response.equals("yes")) {
+                        if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y")) {
                             continue;
-                        } else if (response.equals("no")){
+                        } else if (response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n")){
                             System.out.println("Managers added successfully.");
                             break;
                         } else {
