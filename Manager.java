@@ -11,7 +11,7 @@ public class Manager extends Employee{
      
      @Override
      public double calculateSalary(){
-        return this.baseSalary + this.bonus ;
+        return Math.round(this.baseSalary + this.bonus);
      }
 
      @Override

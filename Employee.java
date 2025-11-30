@@ -18,7 +18,7 @@ public abstract class Employee{
     public int getId(){return this.id ;}
     public String getName(){return this.name;} 
     public String getJobTitle(){return this.jobTitle;}
-    public String getDetails(){return "ID :" + this.id + " | Name : " + getSubName();}
+    public String getDetails(){return "ID :" + this.id + " | Name : " + getSubName() + " | " + this.jobTitle;}
     // ---- ^^ getters & AKA concrete methods ^^ ----
 
     public abstract double calculateSalary();

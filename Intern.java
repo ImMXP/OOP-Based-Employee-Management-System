@@ -2,9 +2,8 @@ public class Intern extends Employee{
     private double fixedStipend ;
     
     public Intern(int id, String name, String jobTitle){
-        super(id,name,jobTitle) ;
-        fixedStipend = 990.00 ;
-
+        super(id,name,jobTitle);
+        fixedStipend = 990.00;
     }
 
     @Override

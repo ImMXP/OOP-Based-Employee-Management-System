@@ -15,7 +15,7 @@ public class Engnieer extends Employee{
 
      @Override
      public double calculateSalary(){
-        return hourlyRate * hoursWorked ;
+        return Math.round(hourlyRate * hoursWorked) ;
      }
      
      @Override

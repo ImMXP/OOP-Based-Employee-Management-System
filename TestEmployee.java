@@ -8,9 +8,8 @@ public class TestEmployee {
 
         AdminstratorDATA adminData = new AdminstratorDATA(); 
 
-        ArrayList<Manager> managers = new ArrayList<>();
-        ArrayList<Intern> interns = new ArrayList<>();
-        ArrayList<Engnieer> engineers = new ArrayList<>(); 
+        ArrayList<Employee> allEmployees = new ArrayList<>(); // ploymorphism array
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -60,7 +59,7 @@ public class TestEmployee {
             switch (choice) {
                 case 1:
                     while(true){
-                        System.out.println("Enter details for Manager #" + (managers.size() + 1));
+                        System.out.println("Enter details for Manager #" + (allEmployees.size() + 1)); //
                         System.out.print("Enter Name: ");
                         String name = scanner.nextLine();
                         String CheckName[] = name.split(" ");
@@ -76,7 +75,11 @@ public class TestEmployee {
                             try {
                             System.out.print("Enter Salary: ");
                             salary = scanner.nextDouble();
-                            scanner.nextLine();
+                            if(salary < 0){
+                                System.out.println("ERROR : invalid input please write number greater than 0");
+                                continue;
+                            }else
+                                scanner.nextLine();
                             }
                             catch (Exception InputMismatchException) {
                             System.out.println("Invalid input for salary. Please enter a valid number.");
@@ -95,8 +98,12 @@ public class TestEmployee {
                                 try {
                                     System.out.print("Enter Bonus Amount: ");
                                     bonus = scanner.nextDouble();
-                                    scanner.nextLine();
-                                    managers.add(new Manager(managers.size()+1, name, jobTitle, salary, bonus));
+                                    if(bonus < 0){
+                                        System.out.println("ERROR : invalid input please write number greater than 0");
+                                        continue;
+                                    }else
+                                        scanner.nextLine();
+                                    allEmployees.add(new Manager(allEmployees.size()+1, name, jobTitle, salary, Math.round(bonus)));
                                 }
                                 catch (Exception InputMismatchException) {
                                     System.out.println("Invalid input for bonus, Please enter a valid number.");
@@ -107,7 +114,7 @@ public class TestEmployee {
                             }
                         }else {
                             System.out.println("No bonus will be added for this manager.");
-                            managers.add(new Manager(managers.size()+1, name, jobTitle, salary, 0));
+                            allEmployees.add(new Manager(allEmployees.size()+1, name, jobTitle, salary, 0));
                         }
 
                         // استفسار المستخدم إذا كان يريد إضافة مدير آخر (تم إصلاح مكانه ليشمل الحالتين)
@@ -128,7 +135,7 @@ public class TestEmployee {
 
                 case 2:
                     while (true) {
-                        System.out.println("Enter details for Intern #" + (interns.size() + 1));
+                        System.out.println("Enter details for Intern #" + (allEmployees.size() + 1));
                         System.out.print("Enter Name: ");
                         String name = scanner.nextLine();
                         String CheckName[] = name.split(" ");
@@ -139,14 +146,14 @@ public class TestEmployee {
                         System.out.print("Enter Job Title: ");
                         String jobTitle = scanner.nextLine();
                         
-                        interns.add(new Intern(interns.size()+1, name, jobTitle));
+                        allEmployees.add(new Intern(allEmployees.size()+1, name, jobTitle));
 
                         // استفسار المستخدم إذا كان يريد إضافة متدرب آخر
                         System.out.print("Do you want to add another intern? (yes/no): ");
                         String response = scanner.nextLine().trim().toLowerCase();
-                        if (response.equals("yes")) 
+                        if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y"))
                             continue;
-                        else if (response.equals("no")){
+                        else if (response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n")){
                             System.out.println("Interns added successfully.");
                             break;
                         } else {
@@ -154,12 +161,11 @@ public class TestEmployee {
                             break;
                         }
                     }
-                    System.out.println("Interns added successfully.");
                     break;
                     
                 case 3: 
                     while(true){
-                        System.out.println("Enter details for Engineer #" + (engineers.size() + 1));
+                        System.out.println("Enter details for Engineer #" + (allEmployees.size() + 1));
                         System.out.print("Enter Name :");
                         String name = scanner.nextLine();
                         String CheckName[] = name.split(" ");
@@ -174,7 +180,11 @@ public class TestEmployee {
                             try{
                                 System.out.print("Enter hourly rate (Default work hour is 8 Hours ) :");
                                 hourlyRate = scanner.nextDouble();
-                                scanner.nextLine();
+                                if(hourlyRate < 0){
+                                    System.out.println("ERROR : invalid input please write number greater than 0");
+                                    continue;
+                                }else
+                                    scanner.nextLine();
                             } catch (Exception InputMismatchException) {
                                 System.out.println("ERROR : Enter invalid number .");
                                 scanner.nextLine();
@@ -182,14 +192,14 @@ public class TestEmployee {
                             }
                             break;
                         }
-                        engineers.add(new Engnieer(engineers.size()+1, name, jobTitle, hourlyRate, 8));
+                        allEmployees.add(new Engnieer(allEmployees.size()+1, name, jobTitle, hourlyRate, 8));
 
                         // استفسار المستخدم إذا كان يريد إضافة مهندس آخر
                         System.out.print("Do you want to add another engineer? (yes/no): ");
                         String response = scanner.nextLine().trim().toLowerCase();
-                        if (response.equals("yes")) 
+                        if (response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("y"))
                             continue;
-                        else if (response.equals("no")){
+                        else if (response.equalsIgnoreCase("no") || response.equalsIgnoreCase("n")){
                             System.out.println("Engineers added successfully.");
                             break;
                         } else {
@@ -201,32 +211,8 @@ public class TestEmployee {
 
                 case 4: 
                     System.out.println("\n--- Displaying all employees ---");
-                    
-                    System.out.println("Managers:");
-                    if (managers.isEmpty()) {
-                        System.out.println("No managers available.");
-                    } else {
-                        for (Manager m : managers) {
-                            System.out.println(m.getDetails());
-                        }
-                    }
-                    
-                    System.out.println("\nInterns:");
-                    if (interns.isEmpty()) {
-                        System.out.println("No interns available.");
-                    } else {
-                        for (Intern in : interns) {
-                            System.out.println(in.getDetails());
-                        }
-                    }
-                    
-                    System.out.println("\nEngineers:");
-                    if (engineers.isEmpty()) {
-                        System.out.println("No engineers available.");
-                    } else {
-                        for (Engnieer en : engineers) {
-                            System.out.println(en.getDetails());
-                        }
+                    for(Employee a : allEmployees){
+                        System.out.println(a.getDetails());
                     }
                     break;
                     
@@ -240,20 +226,29 @@ public class TestEmployee {
                     switch (subChoice) {
                         case 1:
                             System.out.println("\nManagers Details:");
-                            for (Manager m : managers) {
-                                System.out.println("Details for the manager "+ m.getSubName() +"\n"+m.getFullDetails() +"\n");
+                            for (Employee m : allEmployees) {
+
+                                if(m instanceof Manager i){
+                                    System.out.println("Details for the manager "+ i.getSubName() +"\n"+i.getFullDetails() +"\n");
+                                }
                             }
+
+
                             break;
                         case 2:
                             System.out.println("\nInterns Details:");
-                            for (Intern in : interns) {
-                                System.out.println("Details for the manager "+ in.getSubName() +"\n"+in.getFullDetails() +"\n");
+                            for (Employee m : allEmployees) {
+                                if(m instanceof Intern i){
+                                    System.out.println("Details for the manager "+ i.getSubName() +"\n"+i.getFullDetails() +"\n");
+                                }
                             }
                             break;
                         case 3:
-                            System.out.println("\nEngineers Details:");
-                            for (Engnieer en : engineers) {
-                                System.out.println("Details for the manager "+ en.getSubName() +"\n"+en.getFullDetails() +"\n");
+                            System.out.println("\nEngnieer Details:");
+                            for (Employee m : allEmployees) {
+                                if(m instanceof Engnieer i){
+                                    System.out.println("Details for the manager "+ i.getSubName() +"\n"+i.getFullDetails() +"\n");
+                                }
                             }
                             break;
                         default:
